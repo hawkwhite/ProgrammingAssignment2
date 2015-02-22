@@ -1,0 +1,16 @@
+{
+    "contents" : "## Put comments here that give an overall description of what your\n## functions do\n\n## This function will create a special matrix which is a list with functions to :\n## 1 - set the value of the matrix\n## 2 - get the value of the matrix\n## 3 - set the value of the solved (inverted) matrix\n## 4 - get the value of the solved (inverted) matrix\n\nmakeCacheMatrix <- function(x = matrix()) {\n        m <- NULL\n        set <- function(y) {\n          x <<- y\n          m <<- NULL\n        }\n        get <- function() x\n        setsolved <- function(solve) m <<- solve\n        getsolved <- function() m\n        list(set = set, get = get,\n             setsolved = setsolved,\n             getsolved = getsolved)\n\n}\n\n\n## This function solves (inverts) a matrix, but checks beforehand if that value is \n## cached.\n\ncacheSolve <- function(x, ...) {\n        ## Return a matrix that is the inverse of 'x'\n        m <- x$getsolved()\n        if(!is.null(m)) {\n          message(\"getting cached data\")\n          return(m)\n        }\n        data <- x$get()\n        m <- solve(data, ...)\n        x$setsolved(m)\n        m\n}\n",
+    "created" : 1424631146271.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "117620720",
+    "id" : "60F9CE8D",
+    "lastKnownWriteTime" : 1424634712,
+    "path" : "~/ProgrammingAssignment2/cachematrix.R",
+    "project_path" : "cachematrix.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
